@@ -117,11 +117,11 @@ class CharacterChatApp(QMainWindow):
             current_label_size = self.image_label.size()
             window_size = self.size()
 
-            # --- デバッグ用のprint文を追加 ---
-            print(f"Window size: {window_size.width()}x{window_size.height()}")
-            print(f"Image label size: {current_label_size.width()}x{current_label_size.height()}")
-            print(f"Original pixmap size: {self.original_pixmap.width()}x{self.original_pixmap.height()}")
-            # --- デバッグ用print文ここまで ---
+            # # --- デバッグ用のprint文を追加 ---
+            # print(f"Window size: {window_size.width()}x{window_size.height()}")
+            # print(f"Image label size: {current_label_size.width()}x{current_label_size.height()}")
+            # print(f"Original pixmap size: {self.original_pixmap.width()}x{self.original_pixmap.height()}")
+            # # --- デバッグ用print文ここまで ---
 
             # 元の画像を、ラベルのサイズに合わせて、縦横比を維持してスケーリング
             # FastTransformationを使用して高速化
@@ -131,10 +131,10 @@ class CharacterChatApp(QMainWindow):
                 Qt.FastTransformation  # SmoothTransformationからFastTransformationに変更
             )
 
-            # --- スケーリング後のサイズも確認してみる ---
-            print(f"Scaled pixmap size: {scaled_pixmap.width()}x{scaled_pixmap.height()}")
-            print("---")
-            # --- デバッグ用print文ここまで ---
+            # # --- スケーリング後のサイズも確認してみる ---
+            # print(f"Scaled pixmap size: {scaled_pixmap.width()}x{scaled_pixmap.height()}")
+            # print("---")
+            # # --- デバッグ用print文ここまで ---
 
             # スケーリングした画像をQLabelにセットし直す
             self.image_label.setPixmap(scaled_pixmap)
