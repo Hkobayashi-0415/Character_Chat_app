@@ -1,0 +1,36 @@
+# feature/docker-x11-setup ブランチ 試行記録
+
+---
+
+## 1. 試した構成・設定
+- Dockerfileをcommon/wsl/desktopに分割
+- docker-compose.ymlのDISPLAYやX11関連設定の変更
+- 日本語フォント（fonts-noto-cjk, fonts-ipafont-gothic, fonts-takao-gothic, fonts-vlgothic等）の追加・削除
+- ロケール設定（ja_JP.UTF-8）
+- build.shによるイメージビルド
+- ~/.bashrcでDISPLAY自動設定
+
+## 2. 発生したエラー・現象
+- タイトルバーやラベルの日本語が文字化け
+- DISPLAY未設定時に即終了（entrypointスクリプトのチェック強化）
+- Xサーバー未起動時に「could not connect to display」エラー
+- Qtのxcbプラグイン初期化失敗（libxcb-cursor0等の依存パッケージ追加も効果限定的）
+- docker-compose up時にイメージ名やbuild指定の不一致によるpullエラー
+
+## 3. 試行錯誤の経緯
+- Windows側の日本語フォント有無を確認（Meiryo, Noto Sans JP等）
+- Dockerイメージ内の日本語フォントを増やすも、Xサーバー未起動時は効果なし
+- Xサーバー（VcXsrv等）が起動していないと絶対にウィンドウが出ないことを再認識
+- DISPLAYの自動設定（~/.bashrcやrun_app.sh）で手順簡略化
+- docker-compose.ymlのimage/build指定の違いによる挙動の違いを確認
+
+## 4. 気づき・今後の方針
+- Xサーバーが起動していないと、どんな設定でもGUIアプリは表示されない
+- DISPLAYの自動設定は必須。run_app.sh等のラッパースクリプトが有効
+- 日本語フォント追加は環境依存が大きく、根本解決にはならない場合も
+- 分割直後の構成（buildセクション利用）が運用上シンプル
+- 今後は新しいクリーンなブランチで再構成し、記録を活かしてトラブルシュートを効率化する
+
+---
+
+（このファイルは今後の参照・共有用に活用してください） 
