@@ -19,6 +19,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     qt6-base-dev \
     libx11-6 \
     libxcb1 \
+    libxcb-cursor0 \
     x11-utils \
     xauth \
     x11-apps \
