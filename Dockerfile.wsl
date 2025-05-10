@@ -1,0 +1,9 @@
+# Use common Dockerfile as base
+FROM character_chat_app:common
+
+# WSL用の環境変数
+ENV DISPLAY=${DISPLAY} \
+    XAUTHORITY=/home/appuser/.Xauthority
+
+# エントリポイント
+CMD ["python3", "main.py"] 

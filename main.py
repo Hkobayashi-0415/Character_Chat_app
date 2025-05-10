@@ -8,7 +8,7 @@ from PySide6.QtGui import QPixmap, QResizeEvent
 class CharacterChatApp(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("修正イメージ再現")
+        self.setWindowTitle("Character Chat App")
         self.setMinimumSize(900, 700)  # 最小サイズのみを指定
         
         # メインウィジェットの作成
